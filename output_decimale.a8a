@@ -1,0 +1,47 @@
+inizio: ld 0d2h
+	st num
+    	ldv 0
+    	st centinaia
+    	st decine
+    	st unit
+cent: ld num 
+	cmpv 100
+	jlu deci
+	sub 100
+	st num
+	ld centinaia
+	addv 1
+	st centinaia
+	jmp cent
+
+deci: ld num
+	cmpv 10
+	jlu uni
+	sub 10 
+	st num
+	ld decine
+	addv 1
+	st decine
+	jmp deci
+
+uni:	ld num
+	st unit
+
+output: ld centinaia
+	addv 30h
+	st 0d1h
+	ld decine
+	addv 30h
+	st 0d1h
+	ld unit
+	addv 30h
+	st 0d1h
+	ldv 020h
+	st 0d1h
+	jmp inizio
+
+centinaia: 0
+decine: 0
+unit: 0
+num: 0
+
