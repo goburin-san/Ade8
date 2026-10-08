@@ -1,0 +1,49 @@
+	ldv x        
+	st p
+        
+        ld p         
+        add N
+        st fine_ptr
+
+        ldi p        
+        st best
+
+ciclo:  ld best        
+        cmpi p
+        JLu spod     
+     	jmp stat   
+
+spod:   ldi p        
+        st best
+	jmp stat
+
+stat:   ld p         
+        addv 1
+        st p
+	ld fine_ptr
+        cmp p 
+        jz fine      
+        jmp ciclo
+
+fine:   jmp fine
+
+p:        0
+fine_ptr: 0
+N:        7
+x:        210 41 180 16 90 99 100
+best: 0
+6
+6
+6
+6
+6
+6
+6
+6
+6
+6
+6
+6
+6
+6
+
